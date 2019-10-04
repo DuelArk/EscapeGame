@@ -1,5 +1,6 @@
 #include "util.h"
 
+//핸들 받아오기
 HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
 //커서 숨기기(0)/보이기(1)
@@ -18,6 +19,7 @@ void gotoxy(int x, int y) {
 	SetConsoleCursorPosition(consoleHandle, pos);
 }
 
+//폰트 색 변경
 void SetColor(int font, int background) {
 	int code = font + background * 16;
 	SetConsoleTextAttribute(consoleHandle, code);
