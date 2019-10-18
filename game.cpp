@@ -244,20 +244,26 @@ int Game::drawMenu() {
 
 //키입력
 int Game::keyControl() {
-	if (GetAsyncKeyState(VK_UP) & 0x8000)
-		return UP;
-	else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		return DOWN;
-	else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-		return LEFT;
-	else if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-		return RIGHT;
-	else if (GetAsyncKeyState(VK_RETURN) & 0x8000)
-		return ENTER;
-	else if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
-		return ESC;
-	else
+	HWND hConsole = GetConsoleWindow();
+	if (GetForegroundWindow() == hConsole) {
+		if (GetAsyncKeyState(VK_UP) & 0x8000)
+			return UP;
+		else if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+			return DOWN;
+		else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+			return LEFT;
+		else if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+			return RIGHT;
+		else if (GetAsyncKeyState(VK_RETURN) & 0x8000)
+			return ENTER;
+		else if (GetAsyncKeyState(VK_ESCAPE) & 0x8000)
+			return ESC;
+		else
+			return -1;
+	}
+	else {
 		return -1;
+	}
 }
 
 //게임 설명 그리기

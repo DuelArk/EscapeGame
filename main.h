@@ -26,3 +26,10 @@ using namespace std;
 #include "game.h"
 
 #endif
+
+#ifndef CONIO_H
+#define CONIO_H
+
+#include <conio.h>
+
+#endif
